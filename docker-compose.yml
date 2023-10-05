@@ -9,10 +9,11 @@ services:
       - 3306:3306
     networks:
       - mynetwork
+      
   categories:
     depends_on:
       - mysqldb
-    build: ./ATM
+    build: .
     restart: on-failure
     environment:
       - spring.datasource.url=jdbc:mysql://mysqldb:3306/account?createDatabaseIfNotExist=true
@@ -22,3 +23,7 @@ services:
       - 7777:7777
     networks:
       - mynetwork
+      
+networks:
+  mynetwork:
+  
